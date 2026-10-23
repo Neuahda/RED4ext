@@ -286,11 +286,9 @@ void PluginSystem::Load(const std::filesystem::path& aPath, bool aUseAlteredSear
         if (!isSupported)
         {
             spdlog::warn(
-                L"{} (version: {}) is incompatible with the current patch. The requested runtime of the plugin is {}",
+                L"{} (version: {}) is incompatible with the current patch. The requested runtime of the plugin is {}. "
+                L"Runtime mismatch, loading anyway (version check disabled)",
                 pluginName, std::to_wstring(pluginVersion), std::to_wstring(requestedRuntime));
-
-            m_incompatiblePlugins.emplace_back(pluginName);
-            return;
         }
     }
 
